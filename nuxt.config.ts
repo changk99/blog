@@ -4,6 +4,9 @@ import pxtoviewport from 'postcss-px-to-viewport';
 export default defineNuxtConfig({
   modules: ['@nuxt/content', '@vueuse/nuxt', 'nuxt-icon', '@element-plus/nuxt'],
   css: ['assets/css/theme.css', 'assets/css/normalize.css', 'assets/css/common.css'],
+  app: {
+    baseURL: '/blog/'
+  },
   experimental: {
     configSchema: false
   },

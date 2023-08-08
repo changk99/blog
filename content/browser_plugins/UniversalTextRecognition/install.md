@@ -2,8 +2,8 @@
 title: '安装'
 ---
 
-## ::BrowserPluginInstall
-
+::BrowserPluginInstall
+---
 name: '通用文字识别'
 versionInfos:
 

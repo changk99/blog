@@ -2,8 +2,8 @@
 title: '安装'
 ---
 
-## ::BrowserPluginInstall
-
+::BrowserPluginInstall
+---
 name: '修改网页信息'
 versionInfos:
 

@@ -68,14 +68,13 @@
 import avatarUrl from 'assets/images/changlishe.jpg';
 import { Toc } from './hooks/useToc';
 
-// const runtimeCofig = useRuntimeConfig();
-// console.log(runtimeCofig);
+const runtimeCofig = useRuntimeConfig();
 
 useHead({
   // 提前设置主题,否则会等水合过程才设置会有延迟
   script: [
     {
-      src: '/js/theme.js',
+      src: `${runtimeCofig.app.baseURL}js/theme.js`,
       tagPosition: 'head'
     }
   ],
@@ -250,6 +249,10 @@ function scrollToTop() {
   opacity: 1;
 }
 
+.article-outline {
+  max-width: 300px;
+}
+
 @media screen and (max-width: $viewport-width-m) {
   .article-outline {
     position: fixed;
@@ -262,7 +265,7 @@ function scrollToTop() {
     max-width: var(--aside-max-width);
     transform: translateX(calc(var(--aside-max-width) + 20px));
     transition: transform 0.3s;
-    box-shadow: 2px 10px 15px 1px var(--blog-shadow-color);
+    box-shadow: 1px 1px 5px 1px var(--blog-shadow-color);
     &.open {
       transform: translateX(0);
     }
@@ -283,7 +286,7 @@ function scrollToTop() {
     transform: scale(0);
     transform-origin: 0% 0%;
     transition: transform 0.3s;
-    box-shadow: -2px 10px 15px 1px var(--blog-shadow-color);
+    box-shadow: -2px 2px 5px 1px var(--blog-shadow-color);
     &.open {
       transform: scale(1);
     }

@@ -1,6 +1,1 @@
-blockquote[data-v-a35bc173] {
-  background-color: var(--blog-bg-mute);
-  border-left: 5px solid var(--blog-brand-dark);
-  margin: 1em 0;
-  padding: 1px 1px 1px 0.5em;
-}
+blockquote[data-v-a35bc173]{background-color:var(--blog-bg-mute);border-left:5px solid var(--blog-brand-dark);margin:1em 0;padding:1px 1px 1px .5em}

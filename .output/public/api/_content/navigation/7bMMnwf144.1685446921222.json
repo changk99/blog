@@ -1,0 +1,46 @@
+[
+  {
+    "title": "文章",
+    "_path": "/articles",
+    "children": [
+      {
+        "title": "Css",
+        "_path": "/articles/css",
+        "children": [
+          { "title": "BFC,层叠上下文,级联层", "_path": "/articles/css/bfcstackcascading" },
+          { "title": "css 各种居中方法总结", "_path": "/articles/css/csscenter" },
+          { "title": "纯 css 实现数字自增的动画效果", "_path": "/articles/css/csspropertyatrule" }
+        ]
+      },
+      {
+        "title": "JavaScript",
+        "_path": "/articles/javascript",
+        "children": [
+          {
+            "title": "async/await 异步应用的常用场景",
+            "_path": "/articles/javascript/asyncawaitscene"
+          },
+          { "title": "柯里化在异步编程的应用", "_path": "/articles/javascript/curryandasync" },
+          {
+            "title": "js 浮点数存储精度丢失原理",
+            "_path": "/articles/javascript/floatingpointlossprecision"
+          },
+          {
+            "title": "es6 深入理解 Proxy 和 Reflect 这对影子兄弟",
+            "_path": "/articles/javascript/proxyandreflect"
+          }
+        ]
+      },
+      {
+        "title": "移动端",
+        "_path": "/articles/mobile",
+        "children": [
+          {
+            "title": "真的，移动端尺寸自适应与 dpr 无关",
+            "_path": "/articles/mobile/selfadaptiveanddpr"
+          }
+        ]
+      }
+    ]
+  }
+]

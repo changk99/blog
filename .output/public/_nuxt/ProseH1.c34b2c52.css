@@ -1,0 +1,17 @@
+.title[data-v-d59459f4] {
+  color: var(--blog-text-h);
+  font-size: var(--blog-font-size-h1);
+  margin: 0.2em 0;
+}
+.link[data-v-d59459f4] {
+  color: inherit;
+  padding-left: 0.2em;
+  text-decoration: none;
+}
+.symbol[data-v-d59459f4] {
+  color: var(--blog-brand-light);
+  opacity: 0;
+}
+.title:hover .symbol[data-v-d59459f4] {
+  opacity: 1;
+}

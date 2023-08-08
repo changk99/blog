@@ -1,0 +1,27 @@
+{
+  "_path": "/",
+  "_dir": "",
+  "_draft": false,
+  "_partial": false,
+  "_locale": "zh-Hans",
+  "_empty": false,
+  "title": "首页",
+  "description": "changlishe 的个人博客",
+  "body": {
+    "type": "root",
+    "children": [
+      {
+        "type": "element",
+        "tag": "p",
+        "props": {},
+        "children": [{ "type": "text", "value": "首页内容" }]
+      }
+    ],
+    "toc": { "title": "", "searchDepth": 2, "depth": 2, "links": [] }
+  },
+  "_type": "markdown",
+  "_id": "content:index.md",
+  "_source": "content",
+  "_file": "index.md",
+  "_extension": "md"
+}

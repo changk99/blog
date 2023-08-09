@@ -15,6 +15,16 @@ export function getDirPath(path: string) {
 }
 
 /**
+ * 在静态部署时,静态服务器可能会在首次进入页面时在路径末尾自动添加 / 后缀,为了保证路径一致需要把这个可能存在的后缀移除
+ */
+export function removeLastSlash(path: string) {
+  if (path === '/') {
+    return path;
+  }
+  return path.replace(/(\/|\/index.html)$/, '');
+}
+
+/**
  * 获取滚动距离
  */
 export function getScrollDistance(target: HTMLElement, scrollContainer: HTMLElement) {

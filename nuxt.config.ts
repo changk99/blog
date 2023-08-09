@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     baseURL: '/blog/'
   },
   experimental: {
-    configSchema: false
+    configSchema: false,
+    payloadExtraction: false
   },
   elementPlus: {
     // 禁止自动导入 icon, 使用 nuxt-icon 来导入图标

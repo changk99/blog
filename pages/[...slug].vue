@@ -22,19 +22,19 @@
     <nav class="nav">
       <div class="nav-item nav-item-before">
         <div class="dir-title">{{ prevDirTitle }}</div>
-        <NuxtLink class="link" :to="prev._path" v-if="needPrev">
+        <NuxtLink class="link" :to="prev?._path" v-if="needPrev">
           <ClientOnlyIcon
             size="1em"
             style="transform: scale(-1, 1)"
             name="ic:baseline-arrow-forward"
           ></ClientOnlyIcon>
-          <span class="title">{{ prev.title }}</span>
+          <span class="title">{{ prev?.title }}</span>
         </NuxtLink>
       </div>
       <div class="nav-item nav-item-after">
         <div class="dir-title">{{ nextDirTitle }}</div>
-        <NuxtLink class="link" :to="next._path" v-if="needNext">
-          <span class="title">{{ next.title }}</span>
+        <NuxtLink class="link" :to="next?._path" v-if="needNext">
+          <span class="title">{{ next?.title }}</span>
           <ClientOnlyIcon size="1em" name="ic:baseline-arrow-forward"></ClientOnlyIcon>
         </NuxtLink>
       </div>
@@ -42,6 +42,8 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ParsedContent } from '@nuxt/content/dist/runtime/types';
+
 const router = useRouter();
 const route = useRoute();
 const nuxtApp = useNuxtApp();
@@ -70,46 +72,56 @@ onUnmounted(() => {
   nuxtApp.hooks.removeHook('page:transition:finish', handlerOtherPathNavigate);
 });
 
-const [prev, next] = await queryContent()
+const currentPath = removeLastSlash(route.path);
+const [prev, next] = await queryContent<ParsedContent>()
   .only(['_path', 'title', '_dir'])
   .where({
     _type: 'markdown'
   })
-  .findSurround(route.path);
+  .findSurround(currentPath)
+  .catch(() => {
+    return [null, null];
+  });
 
 const prevDirTitle = ref<string>();
 const nextDirTitle = ref<string>();
 
 const needPrev = computed(() => {
-  return route.path !== '/' && prev && prev._path.startsWith(getTopDir(route.path));
+  return route.path !== '/' && prev && prev._path.startsWith(getTopDir(currentPath));
 });
 const needNext = computed(() => {
-  return route.path !== '/' && next && next._path.startsWith(getTopDir(route.path));
+  return route.path !== '/' && next && next._path.startsWith(getTopDir(currentPath));
 });
 
 if (needPrev.value) {
-  const prevDirPath = replacePathlastSegment(prev._path, '_dir');
-  queryContent()
+  const prevDirPath = replacePathlastSegment(prev?._path, '_dir');
+  const { title } = await queryContent()
     .only('title')
     .where({
       _path: prevDirPath
     })
     .findOne()
-    .then(({ title }) => {
-      prevDirTitle.value = title;
+    .catch(() => {
+      return {
+        title: ''
+      };
     });
+  prevDirTitle.value = title;
 }
 if (needNext.value) {
-  const nextDirPath = replacePathlastSegment(next._path, '_dir');
-  queryContent()
+  const nextDirPath = replacePathlastSegment(next?._path, '_dir');
+  const { title } = await queryContent()
     .only('title')
     .where({
       _path: nextDirPath
     })
     .findOne()
-    .then(({ title }) => {
-      nextDirTitle.value = title;
+    .catch(() => {
+      return {
+        title: ''
+      };
     });
+  nextDirTitle.value = title;
 }
 
 definePageMeta({
@@ -123,7 +135,7 @@ definePageMeta({
 <style lang="scss" scoped>
 .content-doc {
   padding-bottom: 2em;
-  ::v-deep .content {
+  :deep(.content) {
     min-height: 400px;
   }
   .error {

@@ -78,10 +78,11 @@ function linkClick(event: PointerEvent) {
 watch(
   route,
   async () => {
-    if (appConfig.nav.excludeAsidePathRefresh.includes(route.path)) {
+    const currentPath = removeLastSlash(route.path);
+    if (appConfig.nav.excludeAsidePathRefresh.includes(currentPath)) {
       return;
     }
-    const topDir = getTopDir(route.path);
+    const topDir = getTopDir(currentPath);
     let navigationInfo: NavItem[] = [];
     // 如果顶级路径发生变化更新侧边栏目录
     if (!menuCache.has(topDir)) {
@@ -100,7 +101,7 @@ watch(
     }
     nextTick(() => {
       if (menuRef.value) {
-        const dirPath = getDirPath(route.path);
+        const dirPath = getDirPath(currentPath);
         // 如果该路径的上级和顶级路径一致,表明该路径不会被折叠。否则是折叠的,折叠的话需要打开
         if (dirPath !== topDir) {
           menuRef.value.open(dirPath);
@@ -118,6 +119,18 @@ watch(
               top: distance,
               behavior: 'smooth'
             });
+          }
+          // 解决静态部署中,自动添加后缀后,对应的链接标签不匹配的问题
+          const menuEle = document.querySelector('.left-aside .el-menu');
+          const links = menuEle?.querySelectorAll('a');
+          if (links) {
+            for (const link of links) {
+              if (link.href.endsWith(currentPath)) {
+                link.classList.toggle('router-link-active', true);
+              } else {
+                link.classList.toggle('router-link-active', false);
+              }
+            }
           }
         }
       });

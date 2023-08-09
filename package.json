@@ -5,7 +5,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "prepare": "nuxi prepare",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --dotenv .env",
     "lint": "eslint --fix --ext .js,.ts,.vue . && prettier --write . "
   },
   "devDependencies": {

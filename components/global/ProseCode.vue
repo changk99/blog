@@ -139,6 +139,7 @@ export default defineComponent({
       word-wrap: normal;
       font-size: 0.9em;
       line-height: 1.35;
+      color: rgba(255, 255, 255, 0.87);
     }
   }
   &.no-lang {

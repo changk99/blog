@@ -27,6 +27,7 @@
           :key="link._path"
         >
           <NuxtLink
+            class="link"
             @click="isDropDownOpen = isDropDownOpen ? false : true"
             :to="getFirstVaildPagePath(link)"
             >{{ link.title }}</NuxtLink
@@ -132,8 +133,9 @@ onMounted(() => {
   &.active {
     color: var(--blog-brand-light);
   }
-  a {
+  .link {
     color: inherit;
+    padding: 0.4em 0;
   }
 
   &::before {

@@ -9,7 +9,15 @@ export default <RouterConfig>{
         el: to.hash
       };
     } else {
-      return savedPosition;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(
+            savedPosition || {
+              top: 0
+            }
+          );
+        }, 300);
+      });
     }
   }
 };

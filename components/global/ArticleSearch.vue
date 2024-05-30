@@ -1,30 +1,32 @@
 <template>
   <div class="article-search-wrapper">
-    <el-autocomplete
-      v-model="content"
-      :fetch-suggestions="querySearch"
-      clearable
-      class="search"
-      placeholder="搜索"
-      @focus="emits('focus')"
-      @blur="emits('blur')"
-      popper-class="article-search"
-      ref="autocompleteRef"
-    >
-      <template #prefix>
-        <IconsSearch class="search-icon" width="1em" height="1em"></IconsSearch>
-      </template>
-      <template #default="{ item }">
-        <NuxtLink
-          :title="item.title"
-          @click="autocompleteRef?.blur()"
-          v-if="item.path"
-          :to="item.path"
-          >{{ item.title }}</NuxtLink
-        >
-        <div @click="autocompleteRef?.blur()" class="empty" v-else>{{ item.title }}</div>
-      </template>
-    </el-autocomplete>
+    <ClientOnly>
+      <el-autocomplete
+        v-model="content"
+        :fetch-suggestions="querySearch"
+        clearable
+        class="search"
+        placeholder="搜索"
+        @focus="emits('focus')"
+        @blur="emits('blur')"
+        popper-class="article-search"
+        ref="autocompleteRef"
+      >
+        <template #prefix>
+          <IconsSearch class="search-icon" width="1em" height="1em"></IconsSearch>
+        </template>
+        <template #default="{ item }">
+          <NuxtLink
+            :title="item.title"
+            @click="autocompleteRef?.blur()"
+            v-if="item.path"
+            :to="item.path"
+            >{{ item.title }}</NuxtLink
+          >
+          <div @click="autocompleteRef?.blur()" class="empty" v-else>{{ item.title }}</div>
+        </template>
+      </el-autocomplete>
+    </ClientOnly>
   </div>
 </template>
 

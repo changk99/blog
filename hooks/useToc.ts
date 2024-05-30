@@ -11,8 +11,8 @@ type Head = Omit<Toc, 'children'>;
 
 export function useToc() {
   const nuxtApp = useNuxtApp();
-  const appConif = useAppConfig();
-  const { depth, searchDepth } = appConif.toc;
+  const appConifg = useAppConfig();
+  const { depth, searchDepth } = appConifg.toc;
 
   const toc = ref<Toc[]>([]);
   const ids = ref<string[]>([]);

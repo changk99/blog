@@ -185,6 +185,8 @@ function scrollToTop() {
 .container {
   display: flex;
   min-height: calc(100% - var(--window-top));
+  max-width: $viewport-width-l;
+  margin: auto;
 }
 
 .aside {

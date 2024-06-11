@@ -19,5 +19,8 @@ export default defineAppConfig({
     depth: 1,
     // 目录的搜索深度
     searchDepth: 2
+  },
+  link: {
+    github: 'https://github.com/changk99/blog'
   }
 });

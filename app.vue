@@ -11,7 +11,9 @@
     <HeaderNav class="item"></HeaderNav>
     <ThemeChange title="切换主题" class="item"></ThemeChange>
     <div title="github 仓库" class="item">
-      <IconsGithub width="1.8em" height="1.8em"></IconsGithub>
+      <NuxtLink target="_blank" style="color: unset" :to="config.link.github"
+        ><IconsGithub width="1.8em" height="1.8em"></IconsGithub
+      ></NuxtLink>
     </div>
     <el-avatar
       @click="goHome"
@@ -69,6 +71,7 @@ import avatarUrl from 'assets/images/changlishe.jpg';
 import { Toc } from './hooks/useToc';
 
 const runtimeCofig = useRuntimeConfig();
+const config = useAppConfig();
 
 useHead({
   // 提前设置主题,否则会等水合过程才设置会有延迟

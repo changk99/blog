@@ -11,3 +11,7 @@
 ### 静态部署
 
 执行 `npm run generate` 后会在 .nuxt 目录下生成 public 目录,把 public 目录下的内容部署到静态服务器上就可以了。公共路径的前缀默认是 blog,可通过 nuxt.config.ts 的 app.baseURL 进行配置。
+
+### example
+
+https://fujin.changlishe.com/blog/
